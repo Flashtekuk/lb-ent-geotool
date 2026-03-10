@@ -11,9 +11,9 @@ Steps:
 3. Install geoipupdate from MaxMind
         `rpm -Uvh https://github.com/maxmind/geoipupdate/releases/download/v7.1.1/geoipupdate_7.1.1_linux_amd64.rpm`
 4. Edit /etc/GeoIP.conf
-        Replace "YOUR_ACCOUNT_ID_HERE" with account ID
-        Replace "YOUR_LICENSE_KEY_HERE" with license key
-        Set: DatabaseDirectory /usr/local/share/GeoIP
+*        Replace "YOUR_ACCOUNT_ID_HERE" with account ID
+*        Replace "YOUR_LICENSE_KEY_HERE" with license key
+*        Set: DatabaseDirectory /usr/local/share/GeoIP
 5. Run: `geoipupdate -v`
 6. Configure the WAF blocking in the WebUI;
 
