@@ -1,11 +1,11 @@
 # lb-ent-geotool
 MaxMind GeoIP integration for Loadbalancer.org Enterprise v8.13.4+ appliances
 
-Sources:
+## Sources:
 * https://github.com/maxmind/libmaxminddb (git clone --recursive https://github.com/maxmind/libmaxminddb)
 * https://github.com/maxmind/mod_maxminddb (git clone https://github.com/maxmind/mod_maxminddb.git)
 
-Steps:
+## Steps:
 1. Unpack this archive in the root of LB filesystem
 2. Run: `ldconfig`
 3. Install geoipupdate from MaxMind
@@ -17,7 +17,9 @@ Steps:
 5. Run: `geoipupdate -v`
 6. Configure the WAF blocking in the WebUI;
 
-## This section enables and sources the MaxMind database
+## WAF configuration
+
+### This section enables and sources the MaxMind database
 
 ```
 MaxMindDBEnable On
@@ -25,7 +27,7 @@ MaxMindDBFile COUNTRY_DB /usr/local/share/GeoIP/GeoLite2-Country.mmdb
 MaxMindDBEnv GEOIP_COUNTRY_CODE COUNTRY_DB/country/iso_code
 ```
 
-## This section would block traffic from Poland and Russia, using the 2 letter country code per https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
+### This section would block traffic from Poland and Russia, using the 2 letter country code per https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
 
 ```
 SecRule ENV:GEOIP_COUNTRY_CODE "!@pm PL RU" \
