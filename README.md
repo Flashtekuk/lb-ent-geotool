@@ -19,17 +19,17 @@ Steps:
 
 # This section enables and sources the MaxMind database
 
-MaxMindDBEnable On
+```MaxMindDBEnable On
 MaxMindDBFile COUNTRY_DB /usr/local/share/GeoIP/GeoLite2-Country.mmdb
-MaxMindDBEnv GEOIP_COUNTRY_CODE COUNTRY_DB/country/iso_code
+MaxMindDBEnv GEOIP_COUNTRY_CODE COUNTRY_DB/country/iso_code```
 
 # This section would block traffic from Poland and Russia, using the 2 letter country code per https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
 
-SecRule ENV:GEOIP_COUNTRY_CODE "!@pm PL RU" \
+```SecRule ENV:GEOIP_COUNTRY_CODE "!@pm PL RU" \
    "id:10000,\
    phase:2,\
    deny,\
    log,\
    logdata:'%{MATCHED_VAR}',\
-   msg:'Denying access for IP from GeoIP country %{MATCHED_VAR}'"
+   msg:'Denying access for IP from GeoIP country %{MATCHED_VAR}'"```
 
